@@ -16,8 +16,8 @@ pulldown-cmark.workspace = true
 similar.workspace = true
 
 [dev-dependencies]
-konoma-test-support = { path = "../konoma-test-support" }
-konoma-base = { path = "../konoma-base" }
+konoma-test-support = { version = "0.1.0" }
+konoma-base = { version = "0.1.0" }
 
 [features]
 # Makes the shared source corpora available when the root package's tests call into this crate

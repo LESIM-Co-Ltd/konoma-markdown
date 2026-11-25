@@ -1,0 +1,126 @@
+# konoma tutorial — learn by doing
+
+[日本語版はこちら](./tutorial.ja.md) ← focus this link with `Tab`, open it with `Enter`.
+
+You are reading this *inside* konoma, which means every feature this file describes
+can be tried right here. Keys to remember while reading: `j`/`k` scroll, `q` goes back,
+`?` opens help for whatever screen you are on.
+
+## 1. Scroll and leave
+
+Scroll this document with `j`/`k` (half page: `Ctrl-d`/`Ctrl-u`, ends: `g`/`G`).
+Press `q` once to go back to the file tree — then come back by selecting
+`tutorial.md` and pressing `Enter`. That round trip (tree ⇄ full-screen preview)
+is the core of konoma: no split panes, always the full screen.
+
+## 2. Follow links with Tab
+
+Markdown links are focusable. Press `Tab` repeatedly — the focus (inverted block)
+walks through every link and checkbox in this document. Try it:
+
+- [markdown.md](./markdown.md) — the Markdown showcase (tables, code, Mermaid, images)
+- [sample.csv](./sample.csv) — opens as an aligned table: move cells with `h j k l`,
+  copy a cell/row/column with `y`
+- [sample.png](./sample.png) — image preview: zoom with `+`/`-`, pan with `h j k l`
+- [sample.pdf](./sample.pdf) — PDF pages: turn with `J`/`K`
+- [sample.xlsx](./sample.xlsx) — a spreadsheet as a table, cells in their Excel formats: switch sheets with `J`/`K`
+- [sample.docx](./sample.docx) — a Word document as formatted text (headings, lists, tables, images, math)
+- [sample.pptx](./sample.pptx) — a presentation drawn as slide pictures: turn slides with `J`/`K`, `R` for the text view
+
+Focus one with `Tab`, press `Enter` to open it, then `q` to come back here.
+
+## 3. Toggle these checkboxes
+
+Checkboxes are interactive: `Tab` to focus, `Enter` to toggle.
+The change is written back to this file — you are editing real state, safely
+(konoma verifies the file on disk before writing a single character).
+
+- [ ] I scrolled with `j`/`k`
+- [ ] I opened a link with `Tab` + `Enter` and came back with `q`
+- [ ] I toggled this checkbox with `Enter`
+
+## 4. Search and copy
+
+- `/` searches inside a text preview; `n`/`N` jump between matches (with nothing searched, they
+  jump between the file's changes).
+- `R` shows this file's raw Markdown source. In raw view (and any code/text file),
+  `v` starts a character selection and `V` a line selection — move with `h j k l`,
+  copy with `y`. `Y` copies an `@path#L12` reference for AI chats.
+- From the tree, `y` opens a copy menu: file name, relative/full path, or an
+  `@relative/path` reference.
+
+## 5. The tree is a file manager
+
+Back in the tree (`q`):
+
+- `/` filters entries as you type; `Esc` clears.
+- `Space` opens the file-management menu: create (`n`), rename (`r`), delete (`d` —
+  to the trash, with confirmation), copy/cut/paste (`c`/`x`/`p`).
+- `.` shows dotfiles, `,` opens the sort and display menu, `i` shows file info, `o` opens the file in
+  its own app.
+- `m` + a letter bookmarks the cursor item (lowercase = this project, uppercase =
+  global). `'` opens the bookmark list — press the letter to jump. Both work from
+  previews too, bookmarking the file you are viewing.
+
+## 6. Git, live
+
+If this directory is inside a git repository: `p` opens the project screens, on the changes
+(stage/unstage/commit), `d` on a changed file shows its full-screen diff,
+and on those screens `Tab` walks on to the log and the commit graph. Modified files
+are colored in the tree, and code previews get an editor-style change gutter.
+
+## 7. Watch an AI agent work
+
+konoma's flagship trick, for the "konoma on the left, coding agent on the right"
+layout:
+
+- `F` — follow mode: whenever a file changes on disk, konoma automatically shows
+  the diff of **what changed since you pressed `F`** — not the whole uncommitted
+  diff, so your own earlier edits stay out of the way. Open the `,` menu and press `f` to switch between the
+  two. Scrolling and `n`/`N` keep following; `q` stops.
+- `C` — flat list of every file with uncommitted changes; `n`/`N` jump through them.
+- `y` → `@` / `Y` — copy `@path` / `@path#L12-34` references to paste into the
+  agent conversation.
+
+## 8. If a preview says `[can not preview]`
+
+Nothing is broken. konoma hands a few formats to external tools, and when one is
+missing it says so instead of crashing — everything else keeps working. Install
+what you actually want:
+
+```bash
+# macOS
+brew install ffmpeg
+
+# Debian / Ubuntu
+sudo apt install ffmpeg
+```
+
+- **ffmpeg** (or `ffmpegthumbnailer`) — the representative frame of the videos konoma
+  can't decode itself: VP9, AV1, the older codecs, `.avi`.
+  **H.264 and HEVC inside `.mp4`/`.m4v`/`.mov` and `.mkv`/`.webm` need nothing** — konoma
+  decodes those itself, including what an iPhone records by default.
+- **git** — the whole git suite in section 6. You almost certainly have it already.
+
+Images, SVG, Markdown, Mermaid diagrams, LaTeX math, CSV tables, **spreadsheets, Word
+documents and presentations** (xlsx/ods, docx/odt, pptx/odp), **PDF**, **H.264 and
+HEVC video thumbnails**, and code need **nothing extra** — they are rendered inside
+konoma, in pure Rust.
+(On macOS only, a PDF the built-in renderer can't handle falls back to the
+system's own `qlmanage`/`sips` for its first page — nothing to install there
+either.) The picture formats are drawn as real pixels in any terminal that
+speaks a graphics protocol — kitty graphics (Ghostty, kitty, WezTerm, Konsole),
+iTerm2, or sixel — and degrade to a coarse but visible half-block approximation
+anywhere else. Text previews work in any terminal.
+
+- [ ] I know what to install if I need it
+
+## Where to go next
+
+- Press `?` on any screen — every view documents its own keys.
+- The full manual (guides, configuration, keymap) lives at the documentation site
+  linked from the README, and `config.example.toml` documents every setting inline.
+
+One last box to tick:
+
+- [ ] Done! Enjoy konoma.

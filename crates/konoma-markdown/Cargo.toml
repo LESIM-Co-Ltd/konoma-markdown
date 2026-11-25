@@ -8,11 +8,11 @@ repository.workspace = true
 description = "konoma's Markdown plugin: Markdown files and converted documents as a document view, with the source as its other representation"
 
 [dependencies]
-konoma-plugin = { path = "../konoma-plugin", version = "0.1.0" }
+konoma-plugin = { version = "0.1.0" }
 # The destinations the program carries (`bundled()`); only the `app` feature builds them, so konoma
 # (which depends on this crate with `default-features = false`) gains no dependency.
-konoma-mermaid = { path = "../konoma-mermaid", version = "0.1.0", default-features = false, optional = true }
-konoma-math = { path = "../konoma-math", version = "0.1.0", default-features = false, optional = true }
+konoma-mermaid = { version = "0.1.0", default-features = false, optional = true }
+konoma-math = { version = "0.1.0", default-features = false, optional = true }
 
 [features]
 default = ["app"]
@@ -23,7 +23,7 @@ app = ["konoma-plugin/app", "dep:konoma-mermaid", "dep:konoma-math"]
 
 [dev-dependencies]
 ratatui.workspace = true
-konoma-test-support = { path = "../konoma-test-support" }
+konoma-test-support = { version = "0.1.0" }
 
 [[bin]]
 name = "konoma-markdown"
